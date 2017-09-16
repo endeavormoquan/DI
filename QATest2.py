@@ -1,5 +1,5 @@
 import numpy as np
-import jieba  # for now, i will use jieba third_part lib to cut the string
+import jieba  # for now, i will use jieba,a third_part lib to cut the string, maybe later i will use LSTM
 import os
 
 import improveBayes
@@ -22,7 +22,6 @@ def loadDataSet():
                 pos = lines.index('$\n')
                 str = lines[pos+1]
                 wordList = list(jieba.cut(str))
-                # here can use the PCA to simplify the data
                 docList.append(wordList)
                 fullText.extend(wordList)
                 classList.append(int(className))
@@ -100,9 +99,14 @@ def deseaseTest():
     print(errorCount)
     print(errorCount/len(testSet))
 
-def improveDeseaseTest():
+def improvedDeseaseTest():
     classNum = loadDataSet()
     vocabList = createVocabList(docList)
+
+    freqRub = improveBayes.someRubbishWords()
+    for word in freqRub:
+        if word in vocabList:
+            vocabList.remove(word)
 
     top30Wordds = improveBayes.calcMostFreq(vocabList,fullText)
     for pairW in top30Wordds:
@@ -124,6 +128,9 @@ def improveDeseaseTest():
         trainMat.append(improveBayes.bagOfWords2VecMN(vocabList, docList[docIndex]))
         trainClasses.append(classList[docIndex])
 
+    # print(trainMat)
+# here I can apply the PCA to the trainMat
+
     p, p_ = trainNB(trainMat, trainClasses, classNum)
     errorCount = 0
     for docIndex in testSet:
@@ -134,5 +141,5 @@ def improveDeseaseTest():
     print(errorCount / len(testSet))
 
 if __name__ == '__main__':
-    improveDeseaseTest()
+    improvedDeseaseTest()
 

@@ -1,22 +1,21 @@
 import numpy as np
-import os
 
-def bagOfWords2VecMN(vocabList,inputSet):
-    returnVec = [0]*len(vocabList)
-    for word in inputSet:
-        if word in vocabList:
-            returnVec[vocabList.index(word)] += 1
-    return returnVec
+def loadDataSet(fileName,delim='\t'):
+    fr = open(fileName)
+    stringArr = []
+    # stringArr = [line.strip().split(delim) for line in fr.readlines()]
+    # print(stringArr)
+    # datArr = [map(float, line) for line in stringArr]
+    # return np.mat(datArr)
+    lines = fr.readlines()
+    for line in lines:
+        tempList = line.strip().split('\t')
+        for index in range(len(tempList)):
+            tempList[index] = float(tempList[index])
+        stringArr.append(tempList)
+    stringArr = np.array(stringArr)
+    return stringArr
 
-def calcMostFreq(vocabList,fullText):
-    import operator
-    freqDict = {}
-    for token in vocabList:
-        freqDict[token] = fullText.count(token)
-    sortedFreq = sorted(freqDict.items(),key=operator.itemgetter(1),reverse=True)
-    return sortedFreq[:30]
-
-# todo add the PCA or SVD to improve the accuracy
 def pca(dataMat,topNfeat = 9999):
     meanVals = np.mean(dataMat, axis=0)
     meanRemoved = dataMat - meanVals  # remove mean
@@ -30,14 +29,7 @@ def pca(dataMat,topNfeat = 9999):
     reconMat = (lowDDataMat * redEigVects.T) + meanVals  # 这个是在重构矩阵，用我们的低纬度矩阵。重构矩阵还是有差别的。
     return lowDDataMat, reconMat
 
-def someRubbishWords():
-    fr = open('D:\Git\DI\\freqRubbishword.txt')
-    words = set([])
-    lines = fr.readlines()
-    for line in lines:
-        words = words|set(line.strip())
-    words = words|set('\n')
-    return list(words)
 
 if __name__ == '__main__':
-    someRubbishWords()
+    dataMat = loadDataSet('D:\MachineLearininginAction\Ch13\\testSet.txt')
+    lowDMat,reconMat = pca(dataMat,1)
