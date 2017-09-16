@@ -2,6 +2,8 @@ import numpy as np
 import jieba  # for now, i will use jieba third_part lib to cut the string
 import os
 
+import improveBayes
+
 docList = []
 classList = []
 fullText = []
@@ -74,6 +76,7 @@ def classifyNB(vec2Classify,pResult,pci):
 def deseaseTest():
     classNum = loadDataSet()
     vocabList = createVocabList(docList)
+
     trainingSet = []
     for i in range(classNum):
         trainingSet += list(range(classList.index(i),classList.index(i)+40))
@@ -97,6 +100,39 @@ def deseaseTest():
     print(errorCount)
     print(errorCount/len(testSet))
 
+def improveDeseaseTest():
+    classNum = loadDataSet()
+    vocabList = createVocabList(docList)
+
+    top30Wordds = improveBayes.calcMostFreq(vocabList,fullText)
+    for pairW in top30Wordds:
+        if pairW[0] in vocabList:
+            vocabList.remove(pairW[0])
+    print(len(vocabList))
+
+    trainingSet = []
+    for i in range(classNum):
+        trainingSet += list(range(classList.index(i), classList.index(i) + 40))
+    testSet = []
+    for i in range(20 * classNum):
+        randIndex = int(np.random.uniform(0, len(trainingSet)))
+        testSet.append(trainingSet[randIndex])
+        del (trainingSet[randIndex])
+    trainMat = []
+    trainClasses = []
+    for docIndex in trainingSet:
+        trainMat.append(improveBayes.bagOfWords2VecMN(vocabList, docList[docIndex]))
+        trainClasses.append(classList[docIndex])
+
+    p, p_ = trainNB(trainMat, trainClasses, classNum)
+    errorCount = 0
+    for docIndex in testSet:
+        wordVec = improveBayes.bagOfWords2VecMN(vocabList, docList[docIndex])
+        if classifyNB(wordVec, p, p_) != classList[docIndex]:
+            errorCount += 1
+    print(errorCount)
+    print(errorCount / len(testSet))
+
 if __name__ == '__main__':
-    deseaseTest()
+    improveDeseaseTest()
 
