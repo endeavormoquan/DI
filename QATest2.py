@@ -1,6 +1,7 @@
 import numpy as np
 import jieba  # for now, i will use jieba,a third_part lib to cut the string, maybe later i will use LSTM
 import os
+import jieba.posseg as pseg
 
 import improveBayes
 
@@ -18,10 +19,17 @@ def loadDataSet():
             fileRoute = 'D:\\QATest\\'+className+'\\'+filename
             file = open(fileRoute,'r',encoding='utf-8')
             lines = file.readlines()
+            wordList = []
             if lines.index('$\n'):
                 pos = lines.index('$\n')
                 str = lines[pos+1]
-                wordList = list(jieba.cut(str))
+                words = pseg.cut(str)
+                for w in words:
+                    if w.flag == 'v' or w.flag == 'n':
+                        wordList.append(w.word)
+                # wordList = list(jieba.cut(str))
+                if len(wordList) < 5:
+                    continue
                 docList.append(wordList)
                 fullText.extend(wordList)
                 classList.append(int(className))
@@ -96,8 +104,7 @@ def deseaseTest():
         wordVec = setOfWord2Vec(vocabList,docList[docIndex])
         if classifyNB(wordVec,p,p_) != classList[docIndex]:
             errorCount+=1
-    print(errorCount)
-    print(errorCount/len(testSet))
+    return errorCount,len(testSet)
 
 def improvedDeseaseTest():
     classNum = loadDataSet()
@@ -108,11 +115,11 @@ def improvedDeseaseTest():
         if word in vocabList:
             vocabList.remove(word)
 
-    top30Wordds = improveBayes.calcMostFreq(vocabList,fullText)
-    for pairW in top30Wordds:
-        if pairW[0] in vocabList:
-            vocabList.remove(pairW[0])
-    print(len(vocabList))
+    # top30Wordds = improveBayes.calcMostFreq(vocabList,fullText)
+    # for pairW in top30Wordds:
+    #     if pairW[0] in vocabList:
+    #         vocabList.remove(pairW[0])
+    # print(len(vocabList))
 
     trainingSet = []
     for i in range(classNum):
@@ -137,9 +144,24 @@ def improvedDeseaseTest():
         wordVec = improveBayes.bagOfWords2VecMN(vocabList, docList[docIndex])
         if classifyNB(wordVec, p, p_) != classList[docIndex]:
             errorCount += 1
-    print(errorCount)
-    print(errorCount / len(testSet))
+    return errorCount,len(testSet)
 
 if __name__ == '__main__':
-    improvedDeseaseTest()
+    # count = 0
+    # total = 0
+    # for i in range(10):
+    #     errorCount,numOfSample = deseaseTest()
+    #     count+=errorCount
+    #     total+=numOfSample
+    # print(count/total)
+
+    count = 0
+    total = 0
+    for i in range(10):
+        errorCount, numOfSample = improvedDeseaseTest()
+        count += errorCount
+        total += numOfSample
+    print(count / total)
+# last test says that the first accuracy is 0.7666
+# and the improved method is 0.83333
 
