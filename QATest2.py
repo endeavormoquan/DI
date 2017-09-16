@@ -36,9 +36,9 @@ def loadDataSet():
             file.close()
     return classNum
 
-def createVocabList(dataSet):
+def createVocabList(docList):
     vocabSet = set([])
-    for document in dataSet:
+    for document in docList:
         vocabSet = vocabSet|set(document)
     return list(vocabSet)
 
@@ -108,12 +108,9 @@ def deseaseTest():
 
 def improvedDeseaseTest():
     classNum = loadDataSet()
-    vocabList = createVocabList(docList)
+    vocabList = improveBayes.improvedCreateVocabList(docList)
 
-    freqRub = improveBayes.someRubbishWords()
-    for word in freqRub:
-        if word in vocabList:
-            vocabList.remove(word)
+    vocabList = improveBayes.deleteRubbishWords(vocabList)
 
     # top30Wordds = improveBayes.calcMostFreq(vocabList,fullText)
     # for pairW in top30Wordds:

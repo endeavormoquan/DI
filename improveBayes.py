@@ -39,5 +39,20 @@ def someRubbishWords():
     words = words|set('\n')
     return list(words)
 
+def deleteRubbishWords(vocabList):
+    freqRub = someRubbishWords()
+    for word in freqRub:
+        if word in vocabList:
+            vocabList.remove(word)
+    return vocabList
+
+def improvedCreateVocabList(docList):
+    vocabSet = set([])
+    for document in docList:
+        vocabSet = vocabSet | set(document)
+    vocabList = list(vocabSet)
+    vocabList = deleteRubbishWords(vocabList)
+    return vocabList
+
 if __name__ == '__main__':
     someRubbishWords()
