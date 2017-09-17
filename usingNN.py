@@ -79,7 +79,7 @@ def usingWxb(docList,classList,lengthOfEachDoc):
                 print(i,':',total_cross_entropy)
                 # print(sess.run(y,feed_dict={x:docList[start:end],y_:classList[start:end]}))
                 # entropy.append(total_cross_entropy)
-            result.append(sess.run([w1,w2]))
+                result.append(sess.run([w1,w2]))
     return result
 
 def prepareForNN(docList,classList):

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9082df9-9aff-4150-9105-a964296b6706" name="Default" comment="add a todo">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/ColonyAlbert.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/ColonyAlbert.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usingNN.py" afterPath="$PROJECT_DIR$/usingNN.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,12 +17,12 @@
       <file leaf-file-name="usingNN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/usingNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="71" column="20" lean-forward="false" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+            <state relative-caret-position="378">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#127#1463#0" expanded="false" />
-                <element signature="e#3028#3338#0" expanded="false" />
+                <element signature="e#3032#3342#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -340,7 +338,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4041868" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46698874" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -404,7 +402,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#127#1463#0" expanded="false" />
-            <element signature="e#3028#3338#0" expanded="false" />
+            <element signature="e#3032#3342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -437,7 +435,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#127#1463#0" expanded="false" />
-            <element signature="e#3028#3338#0" expanded="false" />
+            <element signature="e#3032#3342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -477,7 +475,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#127#1463#0" expanded="false" />
-            <element signature="e#3028#3338#0" expanded="false" />
+            <element signature="e#3032#3342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -496,7 +494,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#127#1463#0" expanded="false" />
-            <element signature="e#3028#3338#0" expanded="false" />
+            <element signature="e#3032#3342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,12 +557,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="71" column="20" lean-forward="false" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+        <state relative-caret-position="378">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#127#1463#0" expanded="false" />
-            <element signature="e#3028#3338#0" expanded="false" />
+            <element signature="e#3032#3342#0" expanded="false" />
           </folding>
         </state>
       </provider>
