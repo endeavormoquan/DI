@@ -2,6 +2,7 @@
   <dictionary name="ColonyAlbert">
     <words>
       <w>lstm</w>
+      <w>pseg</w>
     </words>
   </dictionary>
 </component>
