@@ -5,3 +5,6 @@ pca测试版已经写好，但是不知道怎么讲输入的数据也降到同�
 2.APP阶段提供科室选择功能，并且只诊断常规疾病，减少分类目标数
 思考：
 能否构建针对性的疾病症状词典，例如寻找预测正确的样例，求出共有词
+
+当前词向量表示方法：One-Hot Representation.
+the next step will change this into some smarter way.

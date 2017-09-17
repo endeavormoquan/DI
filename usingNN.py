@@ -97,7 +97,7 @@ def testWxb(coff,docList,classList,lengthOfEachDoc):
     errorCount = 0
     w1 = np.array(coff[0])
     w2 = np.array(coff[1])
-    for index in range(100):
+    for index in list(np.random.permutation(len(docList))[:100]):
         temp = np.array(docList[index]).reshape(1,lengthOfEachDoc)
         predict = np.dot(temp,w1)
         predict = np.dot(predict,w2)
@@ -115,8 +115,8 @@ if __name__ == '__main__':
     docList, classList, fullText, classNum, lengthOfEachDoc = loadDataSet()
     docList,classList = prepareForNN(docList,classList)
     # print(np.shape(np.array(docList[0])))
-    result = usingWxb(docList,classList,lengthOfEachDoc)
-    testWxb(result[-1],docList,classList,lengthOfEachDoc)
+    result = usingWxb(docList[:300],classList[:300],lengthOfEachDoc)
+    testWxb(result[-1],docList[300:],classList[300:],lengthOfEachDoc)
 
 
 
