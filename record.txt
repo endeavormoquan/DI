@@ -8,3 +8,6 @@ pca测试版已经写好，但是不知道怎么讲输入的数据也降到同�
 
 当前词向量表示方法：One-Hot Representation.
 the next step will change this into some smarter way.
+
+The way to represent the word will be replaced into Word2Vec.
+And recently I will set up a real CNN to recognize the Simpsons.Fun and challenging.
