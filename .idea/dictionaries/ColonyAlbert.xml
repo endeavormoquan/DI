@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="ColonyAlbert">
     <words>
+      <w>gensim</w>
       <w>lstm</w>
       <w>pseg</w>
     </words>
