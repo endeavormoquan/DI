@@ -107,5 +107,5 @@ def train(mnist):
                 saver.save(sess,'D:/Git/DI/NNModel/model.ckpt',global_step=global_step)
 
 if __name__ == '__main__':
-    mnist = input_data.read_data_sets('/tmp/data',one_hot=True)
+    mnist = input_data.read_data_sets('D:\\MNIST_data',one_hot=True)
     train(mnist)
