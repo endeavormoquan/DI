@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 from tensorflow.examples.tutorials.mnist import input_data
-import  os
 
 BATCH_SIZE = 100
 LEARNING_RATE_BASE = 0.01
