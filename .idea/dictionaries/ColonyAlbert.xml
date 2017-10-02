@@ -2,6 +2,7 @@
   <dictionary name="ColonyAlbert">
     <words>
       <w>conv</w>
+      <w>dirname</w>
       <w>gensim</w>
       <w>lstm</w>
       <w>pseg</w>
