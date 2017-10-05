@@ -15,7 +15,10 @@ def store():
     labels = mnist.train.labels
     pixels = images.shape[1]
     print(images.shape) # (55000,784)
+    print(labels.shape)
+    print(pixels)
     num_examples = mnist.train.num_examples
+    print(num_examples)
 
     filename = 'D:\\output.tfrecords'
     writer = tf.python_io.TFRecordWriter(filename)
@@ -28,7 +31,7 @@ def store():
         };
         
         message Features {
-            map{string ,Feature> feature = 1;
+            map{string ,Feature} feature = 1;
         };
         
         message Feature {
@@ -59,7 +62,8 @@ def unstore():
             'image_raw':tf.FixedLenFeature([],tf.string),
             'pixels':tf.FixedLenFeature([],tf.int64),
             'label':tf.FixedLenFeature([],tf.int64)
-        })
+        }
+    )
     images = tf.decode_raw(features['image_raw'],tf.uint8)
     labels = tf.cast(features['label'],tf.int32)
     pixels = tf.cast(features['pixels'],tf.int32)
@@ -132,19 +136,19 @@ def readData():
 
         coord.request_stop()
         coord.join(threads)
-    # with tf.Session() as sess:
-    #     sess.run(init_op)
-    #     print(sess.run(files))
-    #     coord = tf.train.Coordinator()
-    #     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-    #     for i in range(6):
-    #         print(sess.run([features['i'], features['j']]))
-    #     coord.request_stop()
-    #     coord.join(threads)
+    with tf.Session() as sess:
+        sess.run(init_op)
+        print(sess.run(files))
+        coord = tf.train.Coordinator()
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+        for i in range(6):
+            print(sess.run([features['i'], features['j']]))
+        coord.request_stop()
+        coord.join(threads)
 
 if __name__ == '__main__':
-    # store()
-    # unstore()
-    # tensorflowQueue()
-    # exams()
-    readData()
+    store()
+    unstore()
+    tensorflowQueue()
+    exams()
+    readData()  # do not need to run them all

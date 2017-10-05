@@ -1,6 +1,8 @@
 import gensim
 import jieba
 import os
+import tensorflow as tf
+import numpy as np
 
 
 class MySentences(object):
@@ -19,23 +21,27 @@ class MySentences(object):
                     yield text
 
 
+def _int64_feature(value):
+    return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
+
+def _bytes_feature(value):
+    return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
+
+
 def createModel():
     sentences = MySentences('D:\QATest')
     model = gensim.models.Word2Vec(sentences,size=30,workers=1,min_count=2)
     model.save('D:\Git\model')
-    # print(model.wv['牙周病'])
+
 
 def createVec(dirname):
-    VecTargetPath = 'D:\\VecData\\Vec.txt'
-    LabelTargetPath = 'D:\\LableData\\label.txt'
+    #  the result will be written to D:\\VecTest in tht format of tfrecords
     model = gensim.models.Word2Vec.load('D:\Git\model')
-    fw1 = open(VecTargetPath,'a')
-    fw2 = open(LabelTargetPath,'a')
 
     classth = 0 # used for label
     for classname in os.listdir(dirname):
         classnum = len(os.listdir(dirname))
-        print(classname)
+        fileth = 0
         for fname in os.listdir(os.path.join(dirname,classname)):
             file = open(os.path.join(dirname,classname,fname),'r',encoding='utf-8')
             lines = file.readlines()
@@ -58,15 +64,56 @@ def createVec(dirname):
                     from sklearn import decomposition
                     pca = decomposition.PCA(n_components=30)
                     pca.fit(tempVec)
-                    print(pca.components_.shape) # word -> vec
-                    print(Label) # one hot representation
-                    # fw1.write(pca.components_)
-                    # fw2.write(Label)
+                    # print(pca.components_.shape)  # word -> vec
+                    # print(Label)  # one hot representation
+
+                    #  write to tfrecords
+                    fileth += 1
+                    vec_raw = pca.components_.tostring()
+                    filename = 'D:\\VecTest\\vecData.tfrecords-%.5d-of-%.5d' % (classth, fileth)
+                    writer = tf.python_io.TFRecordWriter(filename)
+                    example = tf.train.Example(features = tf.train.Features(feature={
+                        'vec':_bytes_feature(vec_raw),
+                        'label':_int64_feature(np.argmax(Label))
+                    }))
+                    writer.write(example.SerializeToString())
+                    writer.close()
+                    #  end of writing tfrecords
         classth += 1
-    fw1.close()
-    fw2.close()
+
+
+def batchFiles():
+    files = tf.train.match_filenames_once('D:\\VecTest\\vecData.tfrecords-*')
+    filename_queue = tf.train.string_input_producer(files,shuffle=False)
+
+    reader = tf.TFRecordReader()
+    _,serialized_example = reader.read(filename_queue)
+    features = tf.parse_single_example(
+        serialized_example,
+        features={
+            'vec':tf.FixedLenFeature([],tf.string),
+            'label':tf.FixedLenFeature([],tf.int64)
+        }
+    )
+    decoded_vec = tf.decode_raw(features['vec'],tf.uint8)
+    retyped_vec = tf.cast(decoded_vec,tf.float32)
+    labels = tf.cast(features['label'],tf.int32)
+    vec = tf.reshape(retyped_vec,[900])
+
+    min_after_dequeue = 1000
+    batch_size = 50
+    capacity = min_after_dequeue + 3 * batch_size
+
+    vec_batch,label_batch = tf.train.shuffle_batch([vec,labels],
+                                                   batch_size=batch_size,
+                                                   capacity=capacity,
+                                                   min_after_dequeue=min_after_dequeue)
+    return vec_batch,label_batch
+
 
 if __name__ == '__main__':
     # createModel()
-    createVec('D:\QATest')
+    # createVec('D:\QATest')
+    vec_batch,label_batch = batchFiles()
+    print(vec_batch)
 #todo how to batch the data(pca.components_ and Label)
