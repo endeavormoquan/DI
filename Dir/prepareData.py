@@ -49,17 +49,17 @@ def createVec(dirname):
                     if word in rubbishWords:
                         text.remove(word)
                 if len(text) >= 40:
-                    Vec = []
+                    tempVec = []
                     Label = [0] * classnum
                     Label[classth] = 1
                     for word in text:
                         if word in model.wv:
-                            Vec.append(model.wv[word])
+                            tempVec.append(model.wv[word])
                     from sklearn import decomposition
                     pca = decomposition.PCA(n_components=30)
-                    pca.fit(Vec)
-                    print(pca.components_.shape)
-                    print(Label)
+                    pca.fit(tempVec)
+                    print(pca.components_.shape) # word -> vec
+                    print(Label) # one hot representation
                     # fw1.write(pca.components_)
                     # fw2.write(Label)
         classth += 1
