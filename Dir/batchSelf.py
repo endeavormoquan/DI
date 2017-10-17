@@ -133,7 +133,7 @@ def inception():
         vecBatch, labelBatch = get_batch('D:\\VecAndLabelNP',50)
         if i % 10 == 0:
             train_accuracy = accuracy.eval(feed_dict={
-                x: vecBatch, y_: labelBatch, keep_prob: 1.0})
+                x: vecBatch, y_: labelBatch, keep_prob: 0.5})
             vecBatchForEval, labelBatchForEval = get_batch('D:\\VecAndLabelNPEval',15)
             eval_result = eval_accuracy.eval(feed_dict={
                 x: vecBatchForEval, y_: labelBatchForEval, keep_prob: 0.5})
@@ -141,10 +141,82 @@ def inception():
         train_step.run(feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})
 
 
+def CNNInference():
+    x = tf.placeholder(tf.float32,[15,28*28])
+    y_ = tf.placeholder(tf.float32,shape=[15,5])
+    x_image = tf.reshape(x, [-1, 28, 28, 1])
+
+    with tf.variable_scope('layer1-conv1'):
+        conv1_weight = tf.get_variable('weight',[5,5,1,32],
+                                       initializer=tf.truncated_normal_initializer(stddev=0.1))
+        conv1_biases = tf.get_variable('bias',[32],
+                                       initializer=tf.constant_initializer(0.0))
+
+        conv1 = tf.nn.conv2d(x_image,conv1_weight,strides=[1,1,1,1],padding='SAME')
+        relu1 = tf.nn.relu(tf.nn.bias_add(conv1,conv1_biases))
+
+    with tf.variable_scope('layer2-pool1'):
+        pool1 = tf.nn.max_pool(relu1,ksize=[1,2,2,1],strides=[1,2,2,1],padding='SAME')
+
+    with tf.variable_scope('layer3-conv2'):
+        conv2_weight = tf.get_variable('weight',[5,5,32,64],
+                                       initializer=tf.truncated_normal_initializer(stddev=0.1))
+        conv2_biases = tf.get_variable('bias',[64],
+                                       initializer=tf.constant_initializer(0.0))
+        conv2 = tf.nn.conv2d(pool1,conv2_weight,strides=[1,1,1,1],padding='SAME')
+        relu2 = tf.nn.relu(tf.nn.bias_add(conv2,conv2_biases))
+
+    with tf.variable_scope('layer4-pool2'):
+        pool2 = tf.nn.max_pool(relu2,ksize=[1,2,2,1],strides=[1,2,2,1],padding='SAME')
+
+    pool_shape = pool2.get_shape().as_list()
+    nodes = pool_shape[1]*pool_shape[2]*pool_shape[3]
+    reshaped = tf.reshape(pool2,[pool_shape[0],nodes])
+
+    with tf.variable_scope('layer5-fc1'):
+        fc1_weights = tf.get_variable('weight',[nodes,512],
+                                      initializer=tf.truncated_normal_initializer(stddev=0.1))
+
+        fc1_biases = tf.get_variable('bias',[512],
+                                     initializer=tf.constant_initializer(0.1))
+        fc1 = tf.nn.relu(tf.matmul(reshaped,fc1_weights)+fc1_biases)
+
+    with tf.variable_scope('layer6-fc2'):
+        fc2_weights = tf.get_variable('weights',[512,5],
+                                      initializer=tf.truncated_normal_initializer(stddev=0.1))
+
+        fc2_biases = tf.get_variable('bias',[5],
+                                     initializer=tf.constant_initializer(0.1))
+        y = tf.matmul(fc1,fc2_weights)+fc2_biases
+
+    cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
+    loss = tf.reduce_mean(cross_entropy)
+    train_step = tf.train.GradientDescentOptimizer(0.001).minimize(loss)
+    correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
+
+    eval_correct = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+    eval_accuracy = tf.reduce_mean(tf.cast(eval_correct, tf.float32))
+
+    sess.run(tf.global_variables_initializer())
+
+    for i in range(2000):
+        vecBatch, labelBatch = get_batch('D:\\VecAndLabelNP',15)
+        if i % 20 == 0:
+            train_accuracy = accuracy.eval(feed_dict={
+                x: vecBatch, y_: labelBatch})
+            vecBatchForEval, labelBatchForEval = get_batch('D:\\VecAndLabelNPEval',15)
+            eval_result = eval_accuracy.eval(feed_dict={
+                x: vecBatchForEval, y_: labelBatchForEval})
+            print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
+        train_step.run(feed_dict={x: vecBatch, y_: labelBatch})
+
+
 
 if __name__ == '__main__':
-    createModel()
-    createVec('D:\\QATest','D:\\VecAndLabelNP')
-    createVec('D:\\QAEval','D:\\VecAndLabelNPEval')
+    # createModel()  # only need to run once
+    # createVec('D:\\QATest','D:\\VecAndLabelNP')  # only need to run once
+    # createVec('D:\\QAEval','D:\\VecAndLabelNPEval')  # only need to run once
     sess = tf.InteractiveSession()
     inception()
+    # CNNInference()
