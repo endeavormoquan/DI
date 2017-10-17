@@ -14,10 +14,10 @@ def store():
     images = mnist.train.images
     labels = mnist.train.labels
     pixels = images.shape[1]
-    print(images.shape) # (55000,784)
-    print(labels.shape)
-    print(pixels)
-    num_examples = mnist.train.num_examples
+    print(images.shape)  # (55000,784)
+    print(labels.shape)  # (55000,10)
+    print(pixels)  # 784
+    num_examples = mnist.train.num_examples  # 55000
     print(num_examples)
 
     filename = 'D:\\output.tfrecords'
@@ -72,9 +72,9 @@ def unstore():
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess,coord=coord)
 
-    for i in range(10):
+    for i in range(1):
         image,label,pixel = sess.run([images,labels,pixels])
-        print(label,pixel)
+        print(image,label,pixel)
 
 def tensorflowQueue():
     q = tf.FIFOQueue(2,'int32')
@@ -119,11 +119,17 @@ def readData():
         })
 
     example,label = features['i'],features['j']
+    # print(example,label)
+    # Tensor("ParseSingleExample/Squeeze_i:0", shape=(), dtype=int64)
+    # Tensor("ParseSingleExample/Squeeze_j:0", shape=(), dtype=int64)
 
     batch_size = 3
     capacity = 100+3*batch_size
 
     example_batch,label_batch = tf.train.batch([example,label],batch_size=batch_size,capacity=capacity)
+    # print(example_batch,label_batch)
+    # Tensor("batch:0", shape=(3,), dtype=int64)
+    # Tensor("batch:1", shape=(3,), dtype=int64)
 
     with tf.Session() as sess:
         sess.run(init_op)
@@ -147,8 +153,8 @@ def readData():
         coord.join(threads)
 
 if __name__ == '__main__':
-    store()
-    unstore()
-    tensorflowQueue()
-    exams()
+    # store()
+    # unstore()
+    # tensorflowQueue()
+    # exams()
     readData()  # do not need to run them all

@@ -70,4 +70,4 @@ def main(image_batch,label_batch):
 if __name__ == '__main__':
     image_batch, label_batch = combine()
     print(image_batch)
-    # main(image_batch, label_batch)
+    main(image_batch, label_batch)
