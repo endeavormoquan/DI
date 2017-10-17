@@ -127,30 +127,44 @@ def batch_vec_label():
                                                    capacity=capacity,
                                                    min_after_dequeue=min_after_dequeue)
 
-    return vec_batch,label_batch
-
-
-def train():
+    regularizer = tf.contrib.layers.l2_regularizer(0.0001)
+    logit = inference(vec_batch,regularizer)
+    loss = calc_loss(logit, label_batch)
+    train_step = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(loss)
     with tf.Session() as sess:
         init_op = (tf.global_variables_initializer(), tf.local_variables_initializer())
         sess.run(init_op)
-
-        vec_batch, label_batch = batch_vec_label()
-
-        regularizer = tf.contrib.layers.l2_regularizer(0.0001)
-        logit = inference(vec_batch, regularizer)
-        loss = calc_loss(logit, label_batch)
-        train_step = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(loss)
-    
         coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess,coord=coord)
-
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
         for i in range(2):
             sess.run(train_step)
             print(i)
 
         coord.request_stop()
         coord.join(threads)
+
+
+# def train():
+#     with tf.Session() as sess:
+#         init_op = (tf.global_variables_initializer(), tf.local_variables_initializer())
+#         sess.run(init_op)
+#
+#         vec_batch, label_batch = batch_vec_label()
+#
+#         regularizer = tf.contrib.layers.l2_regularizer(0.0001)
+#         logit = inference(vec_batch, regularizer)
+#         loss = calc_loss(logit, label_batch)
+#         train_step = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(loss)
+#
+#         coord = tf.train.Coordinator()
+#         threads = tf.train.start_queue_runners(sess=sess,coord=coord)
+#
+#         for i in range(2):
+#             sess.run(train_step)
+#             print(i)
+#
+#         coord.request_stop()
+#         coord.join(threads)
 
 
 def inference(input_tensor,regularizer):
@@ -211,4 +225,4 @@ def calc_loss(logit,label):
 
 if __name__ == '__main__':
 
-    train()
+    batch_vec_label()
