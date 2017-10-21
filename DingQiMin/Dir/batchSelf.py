@@ -1,9 +1,10 @@
+import os
+
 import gensim
 import jieba
-import os
+import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
-import numpy as np
 
 
 class MySentences(object):
@@ -42,7 +43,7 @@ def createVec(dirname,disDirname):
             if lines.index('$\n'):
                 pos = lines.index('$\n')
                 str = lines[pos + 1]
-                import improveBayes
+                from DingQiMin import improveBayes
                 rubbishWords = improveBayes.someRubbishWords()
                 text = [word for word in list(jieba.cut(str))]
                 for word in text:

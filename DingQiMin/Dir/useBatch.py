@@ -1,9 +1,9 @@
-import tensorflow as tf
-import numpy as np
-import tensorflow.contrib.slim as slim
+import os
+
 import gensim
 import jieba
-import os
+import numpy as np
+import tensorflow as tf
 
 CONV1_DEEP = 32
 CONV1_SIZE = 5
@@ -62,7 +62,7 @@ def createVec(dirname):
             if lines.index('$\n'):
                 pos = lines.index('$\n')
                 str = lines[pos + 1]
-                import improveBayes
+                from DingQiMin import improveBayes
                 rubbishWords = improveBayes.someRubbishWords()
                 text = [word for word in list(jieba.cut(str))]
                 for word in text:

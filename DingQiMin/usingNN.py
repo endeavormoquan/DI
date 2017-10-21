@@ -1,9 +1,10 @@
+import os
+
+import jieba.posseg as pseg
 import numpy as np
 import tensorflow as tf
-import os
-import jieba.posseg as pseg
 
-import improveBayes
+from DingQiMin import improveBayes
 
 
 def loadDataSet():
@@ -38,7 +39,7 @@ def loadDataSet():
     vocabList = improveBayes.improvedCreateVocabList(docList)
 
     for index in range(len(docList)):
-        vec = improveBayes.bagOfWords2VecMN(vocabList,docList[index])
+        vec = improveBayes.bagOfWords2VecMN(vocabList, docList[index])
         docList[index] = vec
     print(len(docList))
     print(len(docList[0]))

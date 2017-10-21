@@ -1,9 +1,9 @@
-import numpy as np
-import jieba  # for now, i will use jieba,a third_part lib to cut the string, maybe later i will use LSTM
 import os
-import jieba.posseg as pseg
 
-import improveBayes
+import jieba.posseg as pseg
+import numpy as np
+
+from DingQiMin import improveBayes
 
 docList = []
 classList = []

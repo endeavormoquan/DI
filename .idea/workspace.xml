@@ -2,7 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9082df9-9aff-4150-9105-a964296b6706" name="Default" comment="add a todo">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dir/batchSelf.py" afterPath="$PROJECT_DIR$/Dir/batchSelf.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CleanData.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DataCollection4.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dir/batchSelf.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dir/prepareData.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dir/toVec.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dir/useBatch.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Gensim_Corpora_and_Vector_Spaces.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Gensim_Topics_and_Transformations.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/QATest.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/QATest2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFSlimTut.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bayes.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/combineTogether.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/deerwester.dict" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/deerwester.mm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/deerwester.mm.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/freqRubbishWord.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/improveBayes.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/improveWord2Vec.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/learnToUseTFRecord.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/model" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/py1.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/record.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/solveMnistWithCNN.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/solveMnistWithInception.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/splitData.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testPCA.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usingNN.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,77 +41,60 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44553706">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="prepareData.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Dir/prepareData.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-246">
-                  <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#0#13#0" expanded="true" />
-                    <element signature="e#750#819#0" expanded="false" />
-                    <element signature="e#853#922#0" expanded="false" />
-                    <element signature="e#1122#3354#0" expanded="false" />
-                    <element signature="e#3379#4152#0" expanded="false" />
-                    <element signature="e#4194#4740#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="solveMnistWithInception.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/solveMnistWithInception.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="34" />
-                  <folding>
-                    <element signature="e#0#23#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="solveMnistWithCNN.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/solveMnistWithCNN.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
-                  <caret line="76" column="45" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="45" />
-                  <folding>
-                    <element signature="e#0#23#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="batchSelf.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Dir/batchSelf.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="616">
-                  <caret line="138" column="68" lean-forward="false" selection-start-line="138" selection-start-column="59" selection-end-line="138" selection-end-column="68" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="batchSelf.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Dir/batchSelf.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-480">
-                  <caret line="90" column="4" lean-forward="false" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="prepareData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/prepareData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1827">
+              <caret line="168" column="46" lean-forward="false" selection-start-line="168" selection-start-column="37" selection-end-line="168" selection-end-column="46" />
+              <folding>
+                <element signature="e#751#820#0" expanded="false" />
+                <element signature="e#854#923#0" expanded="false" />
+                <element signature="e#1123#3370#0" expanded="false" />
+                <element signature="e#3395#4168#0" expanded="false" />
+                <element signature="e#4210#4756#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="solveMnistWithInception.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DingQiMin/solveMnistWithInception.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1071">
+              <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="solveMnistWithCNN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DingQiMin/solveMnistWithCNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1554">
+              <caret line="76" column="45" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="batchSelf.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/batchSelf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1909">
+              <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -139,6 +150,8 @@
         <option value="$PROJECT_DIR$/Dir/useBatch.py" />
         <option value="$PROJECT_DIR$/solveMnistWithCNN.py" />
         <option value="$PROJECT_DIR$/Dir/batchSelf.py" />
+        <option value="$PROJECT_DIR$/ColonyAlbert/Dir/batchSelf.py" />
+        <option value="$PROJECT_DIR$/DingQiMin/Dir/batchSelf.py" />
       </list>
     </option>
   </component>
@@ -163,8 +176,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -177,26 +188,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dir" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Git\DI\ColonyAlbert" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,7 +245,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DI" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/learnToUseTFRecord.py" />
+      <option name="SCRIPT_NAME" value="D:\Git\DI\ColonyAlbert\learnToUseTFRecord.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -259,7 +263,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DI" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/combineTogether.py" />
+      <option name="SCRIPT_NAME" value="D:\Git\DI\ColonyAlbert\combineTogether.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -436,18 +440,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06354009" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28139183" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33494365" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75040257" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4057971" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44605476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993559" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -501,175 +504,175 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/record.txt">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/record.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/record.txt">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/record.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QATest2.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/QATest2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2352">
           <caret line="117" column="40" lean-forward="false" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/improveBayes.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/improveBayes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="45" column="34" lean-forward="true" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testPCA.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/testPCA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QATest2.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/QATest2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/record.txt">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/record.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/improveBayes.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/improveBayes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testPCA.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/testPCA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
           <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QATest2.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/QATest2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2226">
           <caret line="110" column="23" lean-forward="false" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/improveBayes.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/improveBayes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testPCA.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/testPCA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/record.txt">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/record.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CleanData.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/CleanData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py1.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/py1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-404">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/improveWord2Vec.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/improveWord2Vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QATest.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/QATest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1827">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -677,14 +680,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/somethingForTest.py" />
-    <entry file="file://$PROJECT_DIR$/testPCA.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/testPCA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bayes.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/bayes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2293">
           <caret line="6" column="48" lean-forward="false" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
@@ -695,28 +698,28 @@
     <entry file="file://$PROJECT_DIR$/Direc/queue.py" />
     <entry file="file://$PROJECT_DIR$/Direc/prepareData.py" />
     <entry file="file://$PROJECT_DIR$/Direc/WordToVec.py" />
-    <entry file="file://$PROJECT_DIR$/Gensim_Corpora_and_Vector_Spaces.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Gensim_Corpora_and_Vector_Spaces.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-571">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QATest2.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/QATest2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
           <caret line="116" column="35" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gensim_Topics_and_Transformations.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Gensim_Topics_and_Transformations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/improveBayes.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/improveBayes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="18" column="2" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
@@ -730,42 +733,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/splitData.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/splitData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-106">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFSlimTut.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/TFSlimTut.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/freqRubbishWord.txt">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/freqRubbishWord.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataCollection4.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/DataCollection4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1953">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dir/toVec.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/toVec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/combineTogether.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/combineTogether.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="32" />
@@ -773,7 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learnToUseTFRecord.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/learnToUseTFRecord.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1953">
           <caret line="109" column="83" lean-forward="false" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="83" />
@@ -784,30 +787,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dir/useBatch.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/useBatch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
           <caret line="131" column="40" lean-forward="false" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
           <folding>
-            <element signature="e#0#23#0" expanded="false" />
-            <element signature="e#340#904#0" expanded="false" />
-            <element signature="e#938#1007#0" expanded="false" />
-            <element signature="e#1041#1110#0" expanded="false" />
-            <element signature="e#1136#1279#0" expanded="false" />
-            <element signature="e#1310#3542#0" expanded="false" />
+            <element signature="e#302#866#0" expanded="false" />
+            <element signature="e#900#969#0" expanded="false" />
+            <element signature="e#1003#1072#0" expanded="false" />
+            <element signature="e#1098#1241#0" expanded="false" />
+            <element signature="e#1272#3519#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InceptionNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="26" column="2" lean-forward="false" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/usingNN.py">
+    <entry file="file://$PROJECT_DIR$/InceptionNN.py" />
+    <entry file="file://$PROJECT_DIR$/DingQiMin/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="61" column="1" lean-forward="false" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
@@ -815,34 +810,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dir/prepareData.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/prepareData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-246">
-          <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="46" />
+        <state relative-caret-position="1827">
+          <caret line="168" column="46" lean-forward="false" selection-start-line="168" selection-start-column="37" selection-end-line="168" selection-end-column="46" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#750#819#0" expanded="false" />
-            <element signature="e#853#922#0" expanded="false" />
-            <element signature="e#1122#3354#0" expanded="false" />
-            <element signature="e#3379#4152#0" expanded="false" />
-            <element signature="e#4194#4740#0" expanded="false" />
+            <element signature="e#751#820#0" expanded="false" />
+            <element signature="e#854#923#0" expanded="false" />
+            <element signature="e#1123#3370#0" expanded="false" />
+            <element signature="e#3395#4168#0" expanded="false" />
+            <element signature="e#4210#4756#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solveMnistWithInception.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/solveMnistWithInception.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="34" />
+        <state relative-caret-position="1071">
+          <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="34" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solveMnistWithCNN.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/solveMnistWithCNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="1554">
           <caret line="76" column="45" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="45" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -850,11 +844,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dir/batchSelf.py">
+    <entry file="file://$PROJECT_DIR$/DingQiMin/Dir/batchSelf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
-          <caret line="90" column="4" lean-forward="false" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="-1909">
+          <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
