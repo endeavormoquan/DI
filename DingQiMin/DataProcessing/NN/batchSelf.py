@@ -32,6 +32,14 @@ def createModel(srcDir,disDir,vecSize):
 
 
 def createVec(modelDir,srcDir,disDir):
+
+    fileList = os.listdir(disDir+'\\vec')
+    for index in fileList:
+        os.remove(disDir+'\\vec\\'+index)
+    fileList = os.listdir(disDir+'\\label')
+    for index in fileList:
+        os.remove(disDir+'\\label\\'+index)
+
     model = gensim.models.Word2Vec.load(modelDir)
 
     classth = 0 # used for label
@@ -64,14 +72,18 @@ def createVec(modelDir,srcDir,disDir):
                     # print(Label)  # one hot representation
 
                     #  write to tfrecords
-                    fileth += 1
                     vec = pca.components_
-                    vec = vec.reshape([28*28])
-                    label = np.array(Label)
-                    vecfilename = disDir+'\\vec\\%.5d-of-%.5d.npy' % (classth, fileth)
-                    labelfilename = disDir+'\\label\\%.5d-of-%.5d.npy' % (classth, fileth)
-                    np.save(vecfilename,vec)
-                    np.save(labelfilename,label)
+                    try:
+                        vec = vec.reshape([28*28])
+                        label = np.array(Label)
+                        fileth += 1
+                        vecfilename = disDir + '\\vec\\%.5d-of-%.5d.npy' % (classth, fileth)
+                        labelfilename = disDir + '\\label\\%.5d-of-%.5d.npy' % (classth, fileth)
+                        np.save(vecfilename, vec)
+                        np.save(labelfilename, label)
+                    except ValueError:
+                        print('ValueError')
+
         classth += 1
 
 
@@ -83,11 +95,9 @@ def get_batch(dirname,batch_size):
     labelBatch = []
     for index in ChooseList:
         filename = dirname+'\\vec\\' + listToChoose[index]
-        print(filename)
         vecBatch.append(np.load(filename))
     for index in ChooseList:
         filename = dirname+'\\label\\' + listToChoose[index]
-        print(filename)
         labelBatch.append(np.load(filename))
     return vecBatch,labelBatch
 
@@ -137,10 +147,14 @@ def inception():
         vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP',50)
         if i % 10 == 0:
             train_accuracy = accuracy.eval(feed_dict={
-                x: vecBatch, y_: labelBatch, keep_prob: 0.5})
+                x: vecBatch,
+                y_: labelBatch,
+                keep_prob: 0.5})
             vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
             eval_result = eval_accuracy.eval(feed_dict={
-                x: vecBatchForEval, y_: labelBatchForEval, keep_prob: 0.5})
+                x: np.array(vecBatchForEval),
+                y_: np.array(labelBatchForEval),
+                keep_prob: 0.5})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
         train_step.run(feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})
 
@@ -219,8 +233,8 @@ def CNNInference():
 
 if __name__ == '__main__':
     # createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
-    createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
-    createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
+    # createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
+    # createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
     sess = tf.InteractiveSession()
     inception()
     # CNNInference()

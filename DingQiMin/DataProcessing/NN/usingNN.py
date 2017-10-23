@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 
 from DingQiMin.DataProcessing.Normal import improveBayes
+import tensorflow.contrib.slim as slim
 
 
 def loadDataSet():
@@ -46,6 +47,7 @@ def loadDataSet():
     lengthOfEachDoc = len(docList[0])
     return docList,classList,fullText,classNum,lengthOfEachDoc
 
+
 def usingWxb(docList,classList,lengthOfEachDoc):
     batch_size = 20
     dataset_size = len(docList)
@@ -83,6 +85,7 @@ def usingWxb(docList,classList,lengthOfEachDoc):
                 result.append(sess.run([w1,w2]))
     return result
 
+
 def prepareForNN(docList,classList):
     arr = np.random.permutation(len(docList))
     docListNew = []
@@ -93,6 +96,7 @@ def prepareForNN(docList,classList):
         tempList.append(classList[arr[index]])
         classListNew.append(tempList)
     return docListNew,classListNew
+
 
 def testWxb(coff,docList,classList,lengthOfEachDoc):
     errorCount = 0
@@ -112,12 +116,67 @@ def testWxb(coff,docList,classList,lengthOfEachDoc):
     print(errorCount/len(docList))
 
 
-if __name__ == '__main__':
-    docList, classList, fullText, classNum, lengthOfEachDoc = loadDataSet()
-    docList,classList = prepareForNN(docList,classList)
-    # print(np.shape(np.array(docList[0])))
-    result = usingWxb(docList[:300],classList[:300],lengthOfEachDoc)
-    testWxb(result[-1],docList[300:],classList[300:],lengthOfEachDoc)
+def get_batch(dirname,batch_size):
+    listToChoose = os.listdir(dirname+'\\vec')
+    numOfAll = len(listToChoose)
+    ChooseList = np.random.permutation(np.arange(numOfAll))[:batch_size]
+    vecBatch = []
+    labelBatch = []
+    for index in ChooseList:
+        filename = dirname+'\\vec\\' + listToChoose[index]
+        vecBatch.append(np.load(filename))
+    for index in ChooseList:
+        filename = dirname+'\\label\\' + listToChoose[index]
+        labelBatch.append(np.load(filename))
+    return vecBatch,labelBatch  # (batch_size,)(batch_size,)
 
+
+def testData():
+    # todo bug not fixed setting array elements with seq
+    batch_size = 5
+
+    w1 = tf.Variable(tf.random_normal([784,28],stddev=1,seed=1))
+    b1 = tf.Variable(tf.random_normal([batch_size,28]))
+    w2 = tf.Variable(tf.random_normal([28,4],stddev=1,seed=1))
+    b2 = tf.Variable(tf.random_normal([batch_size,4]))
+
+    x = tf.placeholder(tf.float32, shape=[None, 28 * 28])
+    y_ = tf.placeholder(tf.float32, shape=[None, 4])
+
+    a = tf.matmul(x,w1)+b1
+    y = tf.matmul(a,w2)+b2
+
+    cross_entropy = slim.losses.softmax_cross_entropy(y, y_)
+    train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
+    correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+    eval_correct = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+    eval_accuracy = tf.reduce_mean(tf.cast(eval_correct, tf.float32))
+
+    with tf.Session() as sess:
+        init_op = tf.global_variables_initializer()
+        sess.run(init_op)
+
+        for i in range(1000):
+            vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP', batch_size)
+            if i % 10 == 0:
+                train_accuracy = accuracy.eval(feed_dict={
+                    x: vecBatch, y_: labelBatch})
+                vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval', batch_size)
+                eval_result = eval_accuracy.eval(feed_dict={
+                    x: vecBatchForEval, y_: labelBatchForEval})
+                print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
+            train_step.run(feed_dict={x: vecBatch, y_: labelBatch})
+
+
+
+if __name__ == '__main__':
+    # docList, classList, fullText, classNum, lengthOfEachDoc = loadDataSet()
+    # docList,classList = prepareForNN(docList,classList)
+    # # print(np.shape(np.array(docList[0])))
+    # result = usingWxb(docList[:300],classList[:300],lengthOfEachDoc)
+    # testWxb(result[-1],docList[300:],classList[300:],lengthOfEachDoc)
+    testData()
 
 
