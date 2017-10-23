@@ -31,7 +31,7 @@ def pca(dataMat,topNfeat = 9999):
     return lowDDataMat, reconMat
 
 def someRubbishWords():
-    fr = open('D:\Git\DI\\freqRubbishword.txt')
+    fr = open('D:\Git\DI\\DingQiMin\\freqRubbishword.txt')
     words = set([])
     lines = fr.readlines()
     for line in lines:

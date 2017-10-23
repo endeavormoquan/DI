@@ -51,7 +51,7 @@ def createVec(dirname):
             if lines.index('$\n'):
                 pos = lines.index('$\n')
                 str = lines[pos + 1]
-                from DingQiMin import improveBayes
+                from DingQiMin.DataProcessing.Normal import improveBayes
                 rubbishWords = improveBayes.someRubbishWords()
                 text = [word for word in list(jieba.cut(str))]
                 for word in text:

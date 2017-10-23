@@ -3,7 +3,7 @@ import os
 import jieba.posseg as pseg
 import numpy as np
 
-from DingQiMin import improveBayes
+from DingQiMin.DataProcessing.Normal import improveBayes
 
 docList = []
 classList = []

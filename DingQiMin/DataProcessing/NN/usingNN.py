@@ -4,7 +4,7 @@ import jieba.posseg as pseg
 import numpy as np
 import tensorflow as tf
 
-from DingQiMin import improveBayes
+from DingQiMin.DataProcessing.Normal import improveBayes
 
 
 def loadDataSet():

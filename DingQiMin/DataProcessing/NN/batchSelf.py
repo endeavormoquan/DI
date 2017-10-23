@@ -6,6 +6,8 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
+from DingQiMin.DataProcessing.Normal import improveBayes
+
 
 class MySentences(object):
     def __init__(self,dirname):
@@ -23,27 +25,26 @@ class MySentences(object):
                     yield text
 
 
-def createModel():
-    sentences = MySentences('D:\QATest')
-    model = gensim.models.Word2Vec(sentences,size=28,workers=1,min_count=2)
-    model.save('D:\Git\model')
+def createModel(srcDir,disDir,vecSize):
+    sentences = MySentences(srcDir)
+    model = gensim.models.Word2Vec(sentences,size=vecSize,workers=1,min_count=2)
+    model.save(disDir)
 
 
-def createVec(dirname,disDirname):
-    #  the result will be written to D:\\VecTest in tht format of tfrecords
-    model = gensim.models.Word2Vec.load('D:\Git\model')
+def createVec(modelDir,srcDir,disDir):
+    model = gensim.models.Word2Vec.load(modelDir)
 
     classth = 0 # used for label
-    for classname in os.listdir(dirname):
-        classnum = len(os.listdir(dirname))
+    for classname in os.listdir(srcDir):
+        classnum = len(os.listdir(srcDir))
         fileth = 0
-        for fname in os.listdir(os.path.join(dirname,classname)):
-            file = open(os.path.join(dirname,classname,fname),'r',encoding='utf-8')
+        for fname in os.listdir(os.path.join(srcDir,classname)):
+            file = open(os.path.join(srcDir,classname,fname),'r',encoding='utf-8')
             lines = file.readlines()
             if lines.index('$\n'):
                 pos = lines.index('$\n')
                 str = lines[pos + 1]
-                from DingQiMin import improveBayes
+
                 rubbishWords = improveBayes.someRubbishWords()
                 text = [word for word in list(jieba.cut(str))]
                 for word in text:
@@ -67,8 +68,8 @@ def createVec(dirname,disDirname):
                     vec = pca.components_
                     vec = vec.reshape([28*28])
                     label = np.array(Label)
-                    vecfilename = disDirname+'\\vec\\%.5d-of-%.5d.npy' % (classth, fileth)
-                    labelfilename = disDirname+'\\label\\%.5d-of-%.5d.npy' % (classth, fileth)
+                    vecfilename = disDir+'\\vec\\%.5d-of-%.5d.npy' % (classth, fileth)
+                    labelfilename = disDir+'\\label\\%.5d-of-%.5d.npy' % (classth, fileth)
                     np.save(vecfilename,vec)
                     np.save(labelfilename,label)
         classth += 1
@@ -82,16 +83,18 @@ def get_batch(dirname,batch_size):
     labelBatch = []
     for index in ChooseList:
         filename = dirname+'\\vec\\' + listToChoose[index]
+        print(filename)
         vecBatch.append(np.load(filename))
     for index in ChooseList:
         filename = dirname+'\\label\\' + listToChoose[index]
+        print(filename)
         labelBatch.append(np.load(filename))
     return vecBatch,labelBatch
 
 
 def inception():
     x = tf.placeholder(tf.float32,shape=[None,28*28])
-    y_ = tf.placeholder(tf.float32,shape=[None,5])
+    y_ = tf.placeholder(tf.float32,shape=[None,2])
     x_image = tf.reshape(x,[-1,28,28,1])
 
     with slim.arg_scope([slim.conv2d,slim.fully_connected],
@@ -118,7 +121,7 @@ def inception():
             keep_prob = tf.placeholder(tf.float32)
             h_fc1_drop = slim.dropout(h_fc1,keep_prob=keep_prob)
 
-            y = slim.fully_connected(h_fc1_drop,5,activation_fn=None)
+            y = slim.fully_connected(h_fc1_drop,2,activation_fn=None)
 
     cross_entropy = slim.losses.softmax_cross_entropy(y,y_)
     train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
@@ -131,11 +134,11 @@ def inception():
     sess.run(tf.global_variables_initializer())
 
     for i in range(1000):
-        vecBatch, labelBatch = get_batch('D:\\VecAndLabelNP',50)
+        vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP',50)
         if i % 10 == 0:
             train_accuracy = accuracy.eval(feed_dict={
                 x: vecBatch, y_: labelBatch, keep_prob: 0.5})
-            vecBatchForEval, labelBatchForEval = get_batch('D:\\VecAndLabelNPEval',15)
+            vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
             eval_result = eval_accuracy.eval(feed_dict={
                 x: vecBatchForEval, y_: labelBatchForEval, keep_prob: 0.5})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
@@ -144,7 +147,7 @@ def inception():
 
 def CNNInference():
     x = tf.placeholder(tf.float32,[15,28*28])
-    y_ = tf.placeholder(tf.float32,shape=[15,5])
+    y_ = tf.placeholder(tf.float32,shape=[15,2])
     x_image = tf.reshape(x, [-1, 28, 28, 1])
 
     with tf.variable_scope('layer1-conv1'):
@@ -183,10 +186,10 @@ def CNNInference():
         fc1 = tf.nn.relu(tf.matmul(reshaped,fc1_weights)+fc1_biases)
 
     with tf.variable_scope('layer6-fc2'):
-        fc2_weights = tf.get_variable('weights',[512,5],
+        fc2_weights = tf.get_variable('weights',[512,2],
                                       initializer=tf.truncated_normal_initializer(stddev=0.1))
 
-        fc2_biases = tf.get_variable('bias',[5],
+        fc2_biases = tf.get_variable('bias',[2],
                                      initializer=tf.constant_initializer(0.1))
         y = tf.matmul(fc1,fc2_weights)+fc2_biases
 
@@ -202,22 +205,22 @@ def CNNInference():
     sess.run(tf.global_variables_initializer())
 
     for i in range(2000):
-        vecBatch, labelBatch = get_batch('D:\\VecAndLabelNP',15)
+        vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP',15)
         if i % 20 == 0:
             train_accuracy = accuracy.eval(feed_dict={
                 x: vecBatch, y_: labelBatch})
-            vecBatchForEval, labelBatchForEval = get_batch('D:\\VecAndLabelNPEval',15)
+            vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
             eval_result = eval_accuracy.eval(feed_dict={
                 x: vecBatchForEval, y_: labelBatchForEval})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
         train_step.run(feed_dict={x: vecBatch, y_: labelBatch})
-
+    # todo should visualize the data
 
 
 if __name__ == '__main__':
-    # createModel()  # only need to run once
-    # createVec('D:\\QATest','D:\\VecAndLabelNP')  # only need to run once
-    # createVec('D:\\QAEval','D:\\VecAndLabelNPEval')  # only need to run once
+    # createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
+    createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
+    createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
     sess = tf.InteractiveSession()
     inception()
     # CNNInference()
