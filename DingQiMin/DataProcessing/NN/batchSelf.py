@@ -232,9 +232,9 @@ def CNNInference():
 
 
 if __name__ == '__main__':
-    # createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
-    # createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
-    # createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
+    createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
+    createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
+    createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
     sess = tf.InteractiveSession()
     inception()
-    # CNNInference()
+    
