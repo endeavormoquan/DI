@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9082df9-9aff-4150-9105-a964296b6706" name="Default" comment="add a todo">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,7 +31,7 @@
           <file leaf-file-name="batchSelf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="546">
+                <state relative-caret-position="21">
                   <caret line="92" column="60" lean-forward="false" selection-start-line="92" selection-start-column="60" selection-end-line="92" selection-end-column="60" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
@@ -52,8 +50,8 @@
           <file leaf-file-name="improvedCNN.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+                <state relative-caret-position="399">
+                  <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
                   </folding>
@@ -754,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="21">
           <caret line="92" column="60" lean-forward="false" selection-start-line="92" selection-start-column="60" selection-end-line="92" selection-end-column="60" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -767,8 +765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+        <state relative-caret-position="399">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

@@ -16,3 +16,4 @@ def textCNN():
     y_ = tf.placeholder(tf.float32, shape=[None, 2])
     x_image = tf.reshape(x, [-1, 28, 28, 1])
 
+
