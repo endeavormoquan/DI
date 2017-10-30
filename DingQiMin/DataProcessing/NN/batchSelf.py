@@ -113,7 +113,22 @@ def inception():
                         biases_initializer=tf.constant_initializer(0.1)):
         with slim.arg_scope([slim.max_pool2d],padding='SAME'):
             branch_1 = slim.conv2d(x_image,32,[1,1])
+            '''
+            help(slim.conv2d)
+            (inputs, num_outputs, kernel_size, stride=1, padding='SAME', 
+            data_format=None, rate=1, activation_fn=<function relu at 0x0000020D55EF7D08>, 
+            normalizer_fn=None, normalizer_params=None, 
+            weights_initializer=<function variance_scaling_initializer.<locals>._initializer at 0x0000020D5901C8C8>, 
+            weights_regularizer=None, 
+            biases_initializer=<tensorflow.python.ops.init_ops.Zeros object at 0x0000020D5900C3C8>, 
+            biases_regularizer=None, reuse=None, variables_collections=None, 
+            outputs_collections=None, trainable=True, scope=None)
+            '''
             branch_1 = slim.max_pool2d(branch_1,[2,2])
+            '''
+            (inputs, kernel_size, stride=2, padding='VALID', 
+            data_format='NHWC', outputs_collections=None, scope=None)
+            '''
 
             branch_2 = slim.conv2d(x_image,32,[3,3])
             branch_2 = slim.max_pool2d(branch_2,[2,2])
