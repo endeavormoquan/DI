@@ -167,8 +167,8 @@ def inception():
                 keep_prob: 0.5})
             vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
             eval_result = eval_accuracy.eval(feed_dict={
-                x: np.array(vecBatchForEval),
-                y_: np.array(labelBatchForEval),
+                x: vecBatchForEval,
+                y_: labelBatchForEval,
                 keep_prob: 0.5})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
         train_step.run(feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})

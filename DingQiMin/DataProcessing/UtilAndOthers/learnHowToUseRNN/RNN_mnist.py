@@ -1,7 +1,29 @@
 import tensorflow as tf
+import os
+import numpy as np
 from tensorflow.contrib import rnn
 
 from tensorflow.examples.tutorials.mnist import input_data
+
+def get_batch(dirname,batch_size):
+    listToChoose = os.listdir(dirname+'\\vec')
+    numOfAll = len(listToChoose)
+    ChooseList = np.random.permutation(np.arange(numOfAll))[:batch_size]
+    vecBatch = []
+    labelBatch = []
+    for index in ChooseList:
+        filename = dirname+'\\vec\\' + listToChoose[index]
+        temp = np.load(filename)
+        vecBatch.append(temp.tolist())
+    vecBatch = np.array(vecBatch)
+    for index in ChooseList:
+        filename = dirname+'\\label\\' + listToChoose[index]
+        temp = np.load(filename).tolist()
+        labelBatch.append(temp)
+    labelBatch = np.array(labelBatch)
+    return vecBatch,labelBatch
+
+
 mnist = input_data.read_data_sets('D:\\MNIST_data',one_hot=True)
 
 learning_rate = 0.001
@@ -12,7 +34,7 @@ display_step = 200
 num_input = 28 # MNIST data input (img shape: 28*28)
 timesteps = 28 # timesteps
 num_hidden = 128 # hidden layer num of features
-num_classes = 10 # MNIST total classes (0-9 digits)
+num_classes = 2 # MNIST total classes (0-9 digits)
 
 X = tf.placeholder("float", [None, timesteps, num_input])
 Y = tf.placeholder("float", [None, num_classes])
@@ -50,6 +72,9 @@ train_op = optimizer.minimize(loss_op)
 correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
+eval_correct = tf.equal(tf.argmax(logits,1),tf.argmax(Y,1))
+eval_accuracy = tf.reduce_mean(tf.cast(eval_correct,tf.float32))
+
 # Initialize the variables (i.e. assign their default value)
 init = tf.global_variables_initializer()
 
@@ -59,18 +84,30 @@ with tf.Session() as sess:
     sess.run(init)
 
     for step in range(1, training_steps+1):
-        batch_x, batch_y = mnist.train.next_batch(batch_size)
+        # batch_x, batch_y = mnist.train.next_batch(batch_size)
+
+        batch_x, batch_y = get_batch('D:\Disease\VecAndLabelNP', batch_size)
         # Reshape data to get 28 seq of 28 elements
         batch_x = batch_x.reshape((batch_size, timesteps, num_input))
         # Run optimization op (backprop)
+
+
+
         sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
         if step % display_step == 0 or step == 1:
+
+            batch_x_foreval, batch_y_foreval = get_batch('D:\Disease\VecAndLabelNPEval', 15)
+            batch_x_foreval = batch_x_foreval.reshape((15, timesteps, num_input))
+            eval_result = eval_accuracy.eval(feed_dict={
+                X: batch_x_foreval,
+                Y: batch_y_foreval})
             # Calculate batch loss and accuracy
             loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,
                                                                  Y: batch_y})
             print("Step " + str(step) + ", Minibatch Loss= " + \
                   "{:.4f}".format(loss) + ", Training Accuracy= " + \
-                  "{:.3f}".format(acc))
+                  "{:.3f}".format(acc)+", eval Accuracy= " + \
+                  "{:.3f}".format(eval_result))
 
     print("Optimization Finished!")
 
