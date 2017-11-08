@@ -170,7 +170,6 @@ def testData():
             train_step.run(feed_dict={x: vecBatch, y_: labelBatch})
 
 
-
 if __name__ == '__main__':
     # docList, classList, fullText, classNum, lengthOfEachDoc = loadDataSet()
     # docList,classList = prepareForNN(docList,classList)

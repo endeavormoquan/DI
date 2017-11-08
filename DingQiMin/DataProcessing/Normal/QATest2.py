@@ -11,12 +11,12 @@ fullText = []
 # all this three will be updated upon the loadDataSet() comes into action
 
 def loadDataSet():
-    classname = os.listdir('D:\\QATest')
+    classname = os.listdir('D:\Disease\QATrain')
     classNum = len(classname)
     for className in classname:
-        fileList = os.listdir('D:\\QATest\\'+className)
+        fileList = os.listdir('D:\Disease\QATrain\\'+className)
         for filename in fileList:
-            fileRoute = 'D:\\QATest\\'+className+'\\'+filename
+            fileRoute = 'D:\Disease\QATrain\\'+className+'\\'+filename
             file = open(fileRoute,'r',encoding='utf-8')
             lines = file.readlines()
             wordList = []

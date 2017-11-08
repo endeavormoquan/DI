@@ -7,11 +7,11 @@ classList = []
 fullText = []
 
 def loadDataSet():
-    classNum = os.listdir('D:\\QATest')
+    classNum = os.listdir('D:\Disease\QATrain')
     for className in classNum:
-        fileList = os.listdir('D:\\QATest\\'+className)
+        fileList = os.listdir('D:\Disease\QATrain\\'+className)
         for filename in fileList:
-            fileRoute = 'D:\\QATest\\'+className+'\\'+filename
+            fileRoute = 'D:\Disease\QATrain\\'+className+'\\'+filename
             file = open(fileRoute,'r',encoding='utf-8')
             lines = file.readlines()
             if lines.index('$\n'):

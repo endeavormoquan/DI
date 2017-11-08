@@ -16,6 +16,7 @@ class MySentences(object):
     def __iter__(self):
         for classname in os.listdir(self.dirname):
             for fname in os.listdir(os.path.join(self.dirname,classname)):
+                print(fname)
                 file = open(os.path.join(self.dirname,classname,fname),'r',encoding='utf-8')
                 lines = file.readlines()
                 if lines.index('$\n'):

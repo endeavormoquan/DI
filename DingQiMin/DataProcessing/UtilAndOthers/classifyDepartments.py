@@ -82,16 +82,16 @@ def get_batch(dirname,batch_size):
     return vecBatch,labelBatch
 
 
-def RNN(numOfClasses,srcDir):
+def RNN():
     learning_rate = 0.001
-    training_steps = 20000
+    training_steps = 10000
     batch_size = 128
     display_step = 200
 
     num_input = 28  # MNIST data input (img shape: 28*28)
     timesteps = 40  # timesteps
-    num_hidden = 256  # hidden layer num of features
-    num_classes = numOfClasses  
+    num_hidden = 128  # hidden layer num of features
+    num_classes = 2  # MNIST total classes (0-9 digits)
 
     X = tf.placeholder("float", [None, timesteps, num_input])
     Y = tf.placeholder("float", [None, num_classes])
@@ -141,7 +141,7 @@ def RNN(numOfClasses,srcDir):
         for step in range(1, training_steps+1):
             # batch_x, batch_y = mnist.train.next_batch(batch_size)
 
-            batch_x, batch_y = get_batch(srcDir+'\VecAndLabelNP', batch_size)
+            batch_x, batch_y = get_batch('D:\Disease\VecAndLabelNP', batch_size)
             # Reshape data to get 28 seq of 28 elements
             batch_x = batch_x.reshape((batch_size, timesteps, num_input))
             # Run optimization op (backprop)
@@ -151,7 +151,7 @@ def RNN(numOfClasses,srcDir):
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
             if step % display_step == 0 or step == 1:
 
-                batch_x_foreval, batch_y_foreval = get_batch(srcDir+'\VecAndLabelNPEval', 15)
+                batch_x_foreval, batch_y_foreval = get_batch('D:\Disease\VecAndLabelNPEval', 15)
                 batch_x_foreval = batch_x_foreval.reshape((15, timesteps, num_input))
                 eval_result = eval_accuracy.eval(feed_dict={
                     X: batch_x_foreval,
@@ -163,18 +163,13 @@ def RNN(numOfClasses,srcDir):
                       "{:.4f}".format(loss) + ", Training Accuracy= " + \
                       "{:.3f}".format(acc)+", eval Accuracy= " + \
                       "{:.3f}".format(eval_result))
-                coef1 = [step,loss,acc,eval_result]
-                coef.append(coef1)
 
 
 if __name__ == '__main__':
-    # createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=40)  # only need to run once
-    # createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
-    # createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
-    # RNN(numOfClasses=2,srcDir='D:\Disease')
-    coef = []
     createModel('D:\Departments\QATrain','D:\Departments\model',vecSize=40)  # only need to run once
+    print('model created')
     createVec('D:\Departments\model','D:\Departments\QATrain','D:\Departments\VecAndLabelNP')
+    print('vec created')
     createVec('D:\Departments\model','D:\Departments\QAEval','D:\Departments\VecAndLabelNPEval')
-    RNN(numOfClasses=8,srcDir='D:\Departments')
-    np.save('D:\Departments\coef.npy', np.array(coef))
+    print('vec created')
+    RNN()

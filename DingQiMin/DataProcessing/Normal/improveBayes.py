@@ -1,5 +1,4 @@
 import numpy as np
-import os
 
 def bagOfWords2VecMN(vocabList,inputSet):
     returnVec = [0]*len(vocabList)
@@ -31,7 +30,7 @@ def pca(dataMat,topNfeat = 9999):
     return lowDDataMat, reconMat
 
 def someRubbishWords():
-    fr = open('D:\Git\DI\\DingQiMin\\DataProcessing\\Normal\\freqRubbishword.txt')
+    fr = open('D:\Git\DI\DingQiMin\DataProcessing\\Normal\\freqRubbishword.txt')
     words = set([])
     lines = fr.readlines()
     for line in lines:
@@ -54,5 +53,5 @@ def improvedCreateVocabList(docList):
     vocabList = deleteRubbishWords(vocabList)
     return vocabList
 
-if __name__ == '__main__':
-    someRubbishWords()
+# if __name__ == '__main__':
+#     someRubbishWords()

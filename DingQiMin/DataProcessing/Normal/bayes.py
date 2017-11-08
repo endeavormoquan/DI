@@ -121,6 +121,5 @@ def spamTest():
             errorCount += 1
     print(errorCount/len(testSet))
 
-if __name__ == '__main__':
-    # spamTest()
-    testNB()
+# if __name__ == '__main__':
+#     testNB()
