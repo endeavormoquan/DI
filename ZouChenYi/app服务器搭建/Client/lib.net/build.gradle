@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+
+    /** OkHttp */
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    /** OkHttp 日志拦截= */
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    /** Retrofit */
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    /** 网络请求适配器 */
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    /** Gson 解析 */
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    compile project(':lib.middleware')
+}

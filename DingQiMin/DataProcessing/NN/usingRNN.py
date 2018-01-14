@@ -91,7 +91,7 @@ def RNN(numOfClasses,srcDir):
     num_input = 28  # MNIST data input (img shape: 28*28)
     timesteps = 40  # timesteps
     num_hidden = 256  # hidden layer num of features
-    num_classes = numOfClasses  
+    num_classes = numOfClasses
 
     X = tf.placeholder("float", [None, timesteps, num_input])
     Y = tf.placeholder("float", [None, num_classes])

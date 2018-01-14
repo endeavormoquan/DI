@@ -22,7 +22,7 @@ class MySentences(object):
                 if lines.index('$\n'):
                     pos = lines.index('$\n')
                     str = lines[pos+1]
-                    text = [word for word in list(jieba.cut(str))]
+                    text = [word for word in list(jieba.cut(str))] # 此处的分词算法可以替换成自己的
                     yield text
 
 

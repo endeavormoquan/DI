@@ -1,0 +1,1 @@
+print(step, sess.run(W), sess.run(b))
