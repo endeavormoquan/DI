@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9082df9-9aff-4150-9105-a964296b6706" name="Default" comment="add a todo">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/DingQiMin/DataCollection/py1.py" afterPath="" />
+    <list default="true" id="e9082df9-9aff-4150-9105-a964296b6706" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/QATest2.py" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/QATest2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/freqRubbishWord.txt" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/freqRubbishWord.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/DingQiMin/DataCollection/py1.py" afterPath="$PROJECT_DIR$/DingQiMin/DataCollection/CrowData.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py" afterPath="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,48 +15,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="improvedCNN.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/improvedCNN.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="restoreModel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="restoreModel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrowData.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DingQiMin/DataCollection/CrowData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batchSelf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4935">
-              <caret line="248" column="0" lean-forward="false" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
+            <state relative-caret-position="1092">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#4387#5061#1" expanded="false" />
-                <element signature="e#5129#5280#1" expanded="false" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CleanData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DingQiMin/DataCollection/CleanData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,6 +65,7 @@
       <find>sess</find>
       <find>eval</find>
       <find>improveBayes</find>
+      <find>str</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;),</replace>
@@ -106,7 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/testPCA.py" />
         <option value="$PROJECT_DIR$/improveBayes.py" />
         <option value="$PROJECT_DIR$/QATest2.py" />
         <option value="$PROJECT_DIR$/somethingForTest.py" />
@@ -154,9 +125,10 @@
         <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/usingRNN.py" />
         <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/UtilAndOthers/getTextAfterCut.py" />
         <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/QATest2.py" />
-        <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py" />
         <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/freqRubbishWord.txt" />
         <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/batchSelf.py" />
+        <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/Classification.py" />
+        <option value="$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py" />
       </list>
     </option>
   </component>
@@ -180,6 +152,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -228,28 +201,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Normal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DingQiMin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataProcessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="NN" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -267,14 +218,9 @@
               <option name="myItemId" value="DingQiMin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataCollection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -302,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.batchSelf">
+  <component name="RunManager" selected="Python.restoreModel">
     <configuration default="false" name="QATest2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -467,8 +413,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.batchSelf" />
-        <item index="1" class="java.lang.String" itemvalue="Python.restoreModel" />
+        <item index="0" class="java.lang.String" itemvalue="Python.restoreModel" />
+        <item index="1" class="java.lang.String" itemvalue="Python.batchSelf" />
         <item index="2" class="java.lang.String" itemvalue="Python.improvedCNN" />
         <item index="3" class="java.lang.String" itemvalue="Python.QATest2" />
         <item index="4" class="java.lang.String" itemvalue="Python.usingRNN" />
@@ -514,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506217914436</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit 3.28">
+      <created>1522227170017</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1522227170017</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -530,16 +483,16 @@
     <frame x="-7" y="0" width="1380" height="745" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25757575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26136363" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75040257" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4640523" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993559" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993559" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -584,22 +537,16 @@
     <MESSAGE value="improve the model by calcMostFreq.But the accuracy looks like a ****" />
     <MESSAGE value="add a todo" />
     <MESSAGE value="upload some previous work." />
-    <option name="LAST_COMMIT_MESSAGE" value="upload some previous work." />
+    <MESSAGE value="commit 3.28" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 3.28" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/Normal/QATest2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2226">
-          <caret line="110" column="23" lean-forward="false" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/usingNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -768,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DingQiMin/DataCollection/CleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/UtilAndOthers/getTextAfterCut.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -829,7 +769,7 @@
         <state relative-caret-position="399">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,18 +793,10 @@
         <state relative-caret-position="4935">
           <caret line="248" column="0" lean-forward="false" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
             <element signature="e#4387#5061#1" expanded="false" />
             <element signature="e#5129#5280#1" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -873,6 +805,32 @@
         <state relative-caret-position="420">
           <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/Classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DingQiMin/DataCollection/CleanData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DingQiMin/DataProcessing/NN/restoreModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

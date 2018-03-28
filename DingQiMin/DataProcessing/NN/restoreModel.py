@@ -5,8 +5,6 @@ import tensorflow as tf
 
 
 def someRubbishWords(dir):
-    # TODO change the dir in someRubbishWords()
-    # fr = open('D:\Git\DI\DingQiMin\DataProcessing\\Normal\\freqRubbishword.txt')
     fr = open(dir)
     words = set([])
     lines = fr.readlines()
@@ -15,9 +13,8 @@ def someRubbishWords(dir):
     words = words|set('\n')
     return list(words)
 
+
 def func(string,gensimModel,rubbishWordsDir,cnnModel):
-    # TODO change the dir in func()
-    # model = gensim.models.Word2Vec.load('D:\Departments\model')
     model = gensim.models.Word2Vec.load(gensimModel)
     str = string
     text = [word for word in list(jieba.cut(str))]
@@ -25,6 +22,8 @@ def func(string,gensimModel,rubbishWordsDir,cnnModel):
     for word in text:
         if word in rubbishWords:
             text.remove(word)
+    if len(text) < 40:
+        result = "字符长度不够，请重新输入"
     if len(text) >= 40:
         tempVec = []
         for word in text:
@@ -36,23 +35,20 @@ def func(string,gensimModel,rubbishWordsDir,cnnModel):
         vec = pca.components_
         try:
             vec = vec.reshape([28 * 28])
+            data = []
+            with tf.Session() as sess:
+                saver = tf.train.import_meta_graph(cnnModel)
+                saver.restore(sess, tf.train.latest_checkpoint('D:/Departments/'))
+                graph = tf.get_default_graph()
+                x = graph.get_tensor_by_name("x:0")
+                feed_dict = {x: data}
+                logits = graph.get_tensor_by_name("logits_eval:0")
+                classification_result = sess.run(logits, feed_dict)
+                result = sess.run(tf.argmax(classification_result, 1))
+                print(type(result))
         except ValueError:
-            print('ValueError')
-    data = []
-    data.append(vec)
-    print(type(data))
-    print(np.shape(data))
-    with tf.Session() as sess:
-        saver = tf.train.import_meta_graph(cnnModel)
-        # saver = tf.train.import_meta_graph('D:\Departments\cnnModel.ckpt.meta')
-        saver.restore(sess,tf.train.latest_checkpoint('D:/Departments/'))
-        graph = tf.get_default_graph()
-        x = graph.get_tensor_by_name("x:0")
-        feed_dict = {x:data}
-        logits = graph.get_tensor_by_name("logits_eval:0")
-        classification_result = sess.run(logits,feed_dict)
-        print(classification_result)
-        print(sess.run(tf.argmax(classification_result,1)))
+            result = "字符长度不够，请重新输入"
+
 
 
 if __name__ == '__main__':
