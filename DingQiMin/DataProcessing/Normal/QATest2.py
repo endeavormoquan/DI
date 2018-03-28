@@ -155,6 +155,7 @@ if __name__ == '__main__':
     count = 0
     total = 0
     for i in range(10):
+        print(i)
         errorCount, numOfSample = improvedDeseaseTest()
         count += errorCount
         total += numOfSample

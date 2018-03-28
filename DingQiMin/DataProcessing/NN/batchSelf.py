@@ -15,14 +15,15 @@ class MySentences(object):
 
     def __iter__(self):
         for classname in os.listdir(self.dirname):
+            print(classname)
             for fname in os.listdir(os.path.join(self.dirname,classname)):
-                print(fname)
+                # print(fname)
                 file = open(os.path.join(self.dirname,classname,fname),'r',encoding='utf-8')
                 lines = file.readlines()
                 if lines.index('$\n'):
                     pos = lines.index('$\n')
                     str = lines[pos+1]
-                    text = [word for word in list(jieba.cut(str))] # 此处的分词算法可以替换成自己的
+                    text = [word for word in list(jieba.cut(str))]  # todo 此处的分词算法可以替换成自己的
                     yield text
 
 
@@ -104,9 +105,10 @@ def get_batch(dirname,batch_size):
 
 
 def inception():
-    x = tf.placeholder(tf.float32,shape=[None,28*28])
-    y_ = tf.placeholder(tf.float32,shape=[None,2])
-    x_image = tf.reshape(x,[-1,28,28,1])
+
+    x = tf.placeholder(tf.float32,shape=[None,28*28],name='x')
+    y_ = tf.placeholder(tf.float32,shape=[None,8],name='y_')
+    x_image = tf.reshape(x,[-1,28,28,1],name='x_image')
 
     with slim.arg_scope([slim.conv2d,slim.fully_connected],
                         activation_fn=tf.nn.relu,
@@ -147,38 +149,48 @@ def inception():
             keep_prob = tf.placeholder(tf.float32)
             h_fc1_drop = slim.dropout(h_fc1,keep_prob=keep_prob)
 
-            y = slim.fully_connected(h_fc1_drop,2,activation_fn=None)
+            y = slim.fully_connected(h_fc1_drop,8,activation_fn=None)
+            b = tf.constant(value = 1,dtype=tf.float32)
+            y_eval = tf.multiply(y,b,name='y_eval')
 
     cross_entropy = slim.losses.softmax_cross_entropy(y,y_)
-    train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
+    train_step = tf.train.AdamOptimizer(1e-3).minimize(cross_entropy)
     correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
 
     eval_correct = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))
     eval_accuracy = tf.reduce_mean(tf.cast(eval_correct,tf.float32))
 
+    sess = tf.Session()
     sess.run(tf.global_variables_initializer())
-
-    for i in range(1000):
-        vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP',50)
+    saver = tf.train.Saver()
+    for i in range(100):
+        vecBatch, labelBatch = get_batch('D:\Departments\VecAndLabelNP',50)
         if i % 10 == 0:
-            train_accuracy = accuracy.eval(feed_dict={
+            train_accuracy = sess.run(accuracy,feed_dict={
                 x: vecBatch,
                 y_: labelBatch,
                 keep_prob: 0.5})
-            vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
-            eval_result = eval_accuracy.eval(feed_dict={
+            vecBatchForEval, labelBatchForEval = get_batch('D:\Departments\VecAndLabelNPEval',15)
+            eval_result = sess.run(eval_accuracy,feed_dict={
                 x: vecBatchForEval,
                 y_: labelBatchForEval,
                 keep_prob: 0.5})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
-        train_step.run(feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})
+        sess.run(train_step,feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})
+        # train_step.run(feed_dict={x: vecBatch, y_: labelBatch, keep_prob: 0.5})
+
+    modelPath = 'D:\Departments\cnnModel.ckpt'
+    saver.save(sess,modelPath)
 
 
-def CNNInference():
-    x = tf.placeholder(tf.float32,[15,28*28])
-    y_ = tf.placeholder(tf.float32,shape=[15,2])
-    x_image = tf.reshape(x, [-1, 28, 28, 1])
+def CNNInference():  # 修改eval方法，方法模仿inception函数
+
+    x = tf.placeholder(tf.float32, shape=[None, 28 * 28], name='x')
+    y_ = tf.placeholder(tf.float32, shape=[None, 8], name='y_')
+    # x = tf.placeholder(tf.float32,[1,28*28],name='x')
+    # y_ = tf.placeholder(tf.float32,shape=[1,8],name='y_')
+    x_image = tf.reshape(x, [-1, 28, 28, 1],'x_image')
 
     with tf.variable_scope('layer1-conv1'):
         conv1_weight = tf.get_variable('weight',[5,5,1,32],
@@ -205,7 +217,7 @@ def CNNInference():
 
     pool_shape = pool2.get_shape().as_list()
     nodes = pool_shape[1]*pool_shape[2]*pool_shape[3]
-    reshaped = tf.reshape(pool2,[pool_shape[0],nodes])
+    reshaped = tf.reshape(pool2,[-1,nodes])
 
     with tf.variable_scope('layer5-fc1'):
         fc1_weights = tf.get_variable('weight',[nodes,512],
@@ -216,12 +228,15 @@ def CNNInference():
         fc1 = tf.nn.relu(tf.matmul(reshaped,fc1_weights)+fc1_biases)
 
     with tf.variable_scope('layer6-fc2'):
-        fc2_weights = tf.get_variable('weights',[512,2],
+        fc2_weights = tf.get_variable('weights',[512,8],
                                       initializer=tf.truncated_normal_initializer(stddev=0.1))
 
-        fc2_biases = tf.get_variable('bias',[2],
+        fc2_biases = tf.get_variable('bias',[8],
                                      initializer=tf.constant_initializer(0.1))
         y = tf.matmul(fc1,fc2_weights)+fc2_biases
+
+    b = tf.constant(value=1,dtype=tf.float32)
+    logits_eval = tf.multiply(y,b,name='logits_eval')
 
     cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
     loss = tf.reduce_mean(cross_entropy)
@@ -232,25 +247,33 @@ def CNNInference():
     eval_correct = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
     eval_accuracy = tf.reduce_mean(tf.cast(eval_correct, tf.float32))
 
+    saver = tf.train.Saver()
+    sess = tf.Session()
     sess.run(tf.global_variables_initializer())
-
-    for i in range(2000):
-        vecBatch, labelBatch = get_batch('D:\Disease\VecAndLabelNP',15)
+    for i in range(100):
+        vecBatch, labelBatch = get_batch('D:\Departments\VecAndLabelNP',15)
         if i % 20 == 0:
-            train_accuracy = accuracy.eval(feed_dict={
+            train_accuracy = sess.run(accuracy,feed_dict={
                 x: vecBatch, y_: labelBatch})
-            vecBatchForEval, labelBatchForEval = get_batch('D:\Disease\VecAndLabelNPEval',15)
-            eval_result = eval_accuracy.eval(feed_dict={
+            vecBatchForEval, labelBatchForEval = get_batch('D:\Departments\VecAndLabelNPEval',15)
+            eval_result = sess.run(eval_accuracy,feed_dict={
                 x: vecBatchForEval, y_: labelBatchForEval})
             print("step %d, training and evaluating accuracy %g,%g" % (i, train_accuracy, eval_result))
-        train_step.run(feed_dict={x: vecBatch, y_: labelBatch})
+        sess.run(train_step,feed_dict={x: vecBatch, y_: labelBatch})
+    modelPath = '..\cnnModel.ckpt'
+    saver.save(sess,modelPath)
+    sess.close()
     # todo should visualize the data
 
 
 if __name__ == '__main__':
-    createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
-    createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
-    createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
-    sess = tf.InteractiveSession()
-    inception()
+    # createModel('D:\Disease\QATrain','D:\Disease\model',vecSize=28)  # only need to run once
+    # createVec('D:\Disease\model','D:\Disease\QATrain','D:\Disease\VecAndLabelNP')
+    # createVec('D:\Disease\model','D:\Disease\QAEval','D:\Disease\VecAndLabelNPEval')
+    # createModel('D:\Departments\QATrain', 'D:\Departments\model', vecSize=28)  # only need to run once
+    # createVec('D:\Departments\model', 'D:\Departments\QATrain', 'D:\Departments\VecAndLabelNP')
+    # createVec('D:\Departments\model', 'D:\Departments\QAEval', 'D:\Departments\VecAndLabelNPEval')
+    # inception()
+
+    CNNInference()
     
